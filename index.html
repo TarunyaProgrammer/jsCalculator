@@ -8,67 +8,255 @@
   </head>
   <body>
     <main class="page">
-      <section class="container" aria-labelledby="calc-title">
-        <h1 id="calc-title">Let's Sum</h1>
-        <p class="subtitle">Quick, clean and accessible calculator</p>
+      <h1 class="page-title">Simple Calculator</h1>
 
-        <form
-          class="calc-form"
-          onsubmit="event.preventDefault(); getAdd();"
-          aria-describedby="help"
-        >
-          <div class="field">
-            <label for="val1">Value 1</label>
-            <input
-              id="val1"
-              name="val1"
-              type="number"
-              inputmode="decimal"
-              step="any"
-              placeholder="e.g. 12.5"
-              required
-            />
-          </div>
+      <div class="grid" role="region">
+        <!-- Addition -->
+        <section class="container">
+          <h2 id="add-title">Add</h2>
+          <p class="subtitle">Quick sum of two numbers</p>
 
-          <div class="field">
-            <label for="val2">Value 2</label>
-            <input
-              id="val2"
-              name="val2"
-              type="number"
-              inputmode="decimal"
-              step="any"
-              placeholder="e.g. 3.25"
-              required
-            />
-          </div>
+          <form class="calc-form" data-op="add">
+            <div class="field">
+              <label for="add-val1">Value 1</label>
+              <input
+                id="add-val1"
+                name="add-val1"
+                type="number"
+                inputmode="decimal"
+                step="any"
+                placeholder="e.g. 12.5"
+                required
+              />
+            </div>
 
-          <div class="actions">
-            <button id="sub-sum" type="submit" aria-label="Calculate sum">
-              Sum It up
-            </button>
-            <button
-              id="clear"
-              type="button"
-              class="ghost"
-              onclick="document.getElementById('val1').value='';document.getElementById('val2').value='';document.getElementById('results').textContent='';"
-            >
-              Clear
-            </button>
-          </div>
+            <div class="field">
+              <label for="add-val2">Value 2</label>
+              <input
+                id="add-val2"
+                name="add-val2"
+                type="number"
+                inputmode="decimal"
+                step="any"
+                placeholder="e.g. 3.25"
+                required
+              />
+            </div>
 
-          <p id="help" class="help">
-            Enter numbers and press "Sum It up". Result appears below.
-          </p>
-        </form>
+            <div class="actions">
+              <button id="add-submit" type="submit">Sum It up</button>
+              <button
+                id="clear-add"
+                type="button"
+                class="ghost"
+                aria-label="Clear add inputs"
+              >
+                Clear
+              </button>
+            </div>
 
-        <div
-          id="results"
-          class="results"
-          role="status"
-          aria-live="polite"
-        ></div>
-      </section>
+            <p id="add-help" class="help">
+              Enter numbers and press "Sum It up". Result appears below.
+            </p>
+          </form>
+
+          <div
+            id="results-add"
+            class="results"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </section>
+
+        <!-- Subtraction -->
+        <section class="container" aria-labelledby="sub-title">
+          <h2 id="sub-title">Subtract</h2>
+          <p class="subtitle">Subtract second number from first</p>
+
+          <form class="calc-form" data-op="sub" aria-describedby="sub-help">
+            <div class="field">
+              <label for="sub-val1">Value 1</label>
+              <input
+                id="sub-val1"
+                name="sub-val1"
+                type="number"
+                inputmode="decimal"
+                step="any"
+                placeholder="e.g. 10"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label for="sub-val2">Value 2</label>
+              <input
+                id="sub-val2"
+                name="sub-val2"
+                type="number"
+                inputmode="decimal"
+                step="any"
+                placeholder="e.g. 4"
+                required
+              />
+            </div>
+
+            <div class="actions">
+              <button
+                id="sub-submit"
+                type="submit"
+                aria-label="Calculate subtraction"
+              >
+                Subtract
+              </button>
+              <button
+                id="clear-sub"
+                type="button"
+                class="ghost"
+                aria-label="Clear subtract inputs"
+              >
+                Clear
+              </button>
+            </div>
+
+            <p id="sub-help" class="help">
+              Enter numbers and press "Subtract". Result appears below.
+            </p>
+          </form>
+
+          <div
+            id="results-sub"
+            class="results"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </section>
+
+        <!-- Multiplication -->
+        <section class="container" aria-labelledby="mul-title">
+          <h2 id="mul-title">Multiply</h2>
+          <p class="subtitle">Multiply two numbers</p>
+
+          <form class="calc-form" data-op="mul" aria-describedby="mul-help">
+            <div class="field">
+              <label for="mul-val1">Value 1</label>
+              <input
+                id="mul-val1"
+                name="mul-val1"
+                type="number"
+                inputmode="decimal"
+                step="any"
+                placeholder="e.g. 4.5"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label for="mul-val2">Value 2</label>
+              <input
+                id="mul-val2"
+                name="mul-val2"
+                type="number"
+                inputmode="decimal"
+                step="any"
+                placeholder="e.g. 2"
+                required
+              />
+            </div>
+
+            <div class="actions">
+              <button
+                id="mul-submit"
+                type="submit"
+                aria-label="Calculate multiplication"
+              >
+                Multiply
+              </button>
+              <button
+                id="clear-mul"
+                type="button"
+                class="ghost"
+                aria-label="Clear multiply inputs"
+              >
+                Clear
+              </button>
+            </div>
+
+            <p id="mul-help" class="help">
+              Enter numbers and press "Multiply". Result appears below.
+            </p>
+          </form>
+
+          <div
+            id="results-mul"
+            class="results"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </section>
+
+        <!-- Division -->
+        <section class="container" aria-labelledby="div-title">
+          <h2 id="div-title">Divide</h2>
+          <p class="subtitle">Divide first number by second</p>
+
+          <form class="calc-form" data-op="div" aria-describedby="div-help">
+            <div class="field">
+              <label for="div-val1">Value 1</label>
+              <input
+                id="div-val1"
+                name="div-val1"
+                type="number"
+                inputmode="decimal"
+                step="any"
+                placeholder="e.g. 10"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label for="div-val2">Value 2</label>
+              <input
+                id="div-val2"
+                name="div-val2"
+                type="number"
+                inputmode="decimal"
+                step="any"
+                placeholder="e.g. 2"
+                required
+              />
+            </div>
+
+            <div class="actions">
+              <button
+                id="div-submit"
+                type="submit"
+                aria-label="Calculate division"
+              >
+                Divide
+              </button>
+              <button
+                id="clear-div"
+                type="button"
+                class="ghost"
+                aria-label="Clear divide inputs"
+              >
+                Clear
+              </button>
+            </div>
+
+            <p id="div-help" class="help">
+              Enter numbers and press "Divide". Result appears below.
+            </p>
+          </form>
+
+          <div
+            id="results-div"
+            class="results"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </section>
+      </div>
     </main>
 
     <script src="script.js"></script>
