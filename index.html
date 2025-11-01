@@ -10,7 +10,7 @@
     <main class="page">
       <h1 class="page-title">Simple Calculator</h1>
 
-      <div class="grid" role="region">
+      <div class="grid">
         <!-- Addition -->
         <section class="container">
           <h2 id="add-title">Add</h2>
@@ -24,7 +24,6 @@
                 name="add-val1"
                 type="number"
                 inputmode="decimal"
-                step="any"
                 placeholder="e.g. 12.5"
                 required
               />
@@ -37,22 +36,16 @@
                 name="add-val2"
                 type="number"
                 inputmode="decimal"
-                step="any"
                 placeholder="e.g. 3.25"
                 required
               />
             </div>
 
             <div class="actions">
-              <button id="add-submit" type="submit">Sum It up</button>
-              <button
-                id="clear-add"
-                type="button"
-                class="ghost"
-                aria-label="Clear add inputs"
-              >
-                Clear
+              <button id="add-submit" onclick="getAdd()" type="submit">
+                Sum It up
               </button>
+              <button id="clear-add" type="button" class="ghost">Clear</button>
             </div>
 
             <p id="add-help" class="help">
@@ -60,20 +53,15 @@
             </p>
           </form>
 
-          <div
-            id="results-add"
-            class="results"
-            role="status"
-            aria-live="polite"
-          ></div>
+          <div id="results-add" class="results"></div>
         </section>
 
         <!-- Subtraction -->
-        <section class="container" aria-labelledby="sub-title">
+        <section class="container">
           <h2 id="sub-title">Subtract</h2>
           <p class="subtitle">Subtract second number from first</p>
 
-          <form class="calc-form" data-op="sub" aria-describedby="sub-help">
+          <form class="calc-form" data-op="sub">
             <div class="field">
               <label for="sub-val1">Value 1</label>
               <input
@@ -81,7 +69,6 @@
                 name="sub-val1"
                 type="number"
                 inputmode="decimal"
-                step="any"
                 placeholder="e.g. 10"
                 required
               />
@@ -94,28 +81,16 @@
                 name="sub-val2"
                 type="number"
                 inputmode="decimal"
-                step="any"
                 placeholder="e.g. 4"
                 required
               />
             </div>
 
             <div class="actions">
-              <button
-                id="sub-submit"
-                type="submit"
-                aria-label="Calculate subtraction"
-              >
+              <button id="sub-submit" onclick="getSUB()" type="submit">
                 Subtract
               </button>
-              <button
-                id="clear-sub"
-                type="button"
-                class="ghost"
-                aria-label="Clear subtract inputs"
-              >
-                Clear
-              </button>
+              <button id="clear-sub" type="button" class="ghost">Clear</button>
             </div>
 
             <p id="sub-help" class="help">
@@ -123,20 +98,15 @@
             </p>
           </form>
 
-          <div
-            id="results-sub"
-            class="results"
-            role="status"
-            aria-live="polite"
-          ></div>
+          <div id="results-sub" class="results"></div>
         </section>
 
         <!-- Multiplication -->
-        <section class="container" aria-labelledby="mul-title">
+        <section class="container">
           <h2 id="mul-title">Multiply</h2>
           <p class="subtitle">Multiply two numbers</p>
 
-          <form class="calc-form" data-op="mul" aria-describedby="mul-help">
+          <form class="calc-form" data-op="mul">
             <div class="field">
               <label for="mul-val1">Value 1</label>
               <input
@@ -144,7 +114,6 @@
                 name="mul-val1"
                 type="number"
                 inputmode="decimal"
-                step="any"
                 placeholder="e.g. 4.5"
                 required
               />
@@ -157,28 +126,16 @@
                 name="mul-val2"
                 type="number"
                 inputmode="decimal"
-                step="any"
                 placeholder="e.g. 2"
                 required
               />
             </div>
 
             <div class="actions">
-              <button
-                id="mul-submit"
-                type="submit"
-                aria-label="Calculate multiplication"
-              >
+              <button id="mul-submit" onclick="getMUL()" type="submit">
                 Multiply
               </button>
-              <button
-                id="clear-mul"
-                type="button"
-                class="ghost"
-                aria-label="Clear multiply inputs"
-              >
-                Clear
-              </button>
+              <button id="clear-mul" type="button" class="ghost">Clear</button>
             </div>
 
             <p id="mul-help" class="help">
@@ -186,20 +143,15 @@
             </p>
           </form>
 
-          <div
-            id="results-mul"
-            class="results"
-            role="status"
-            aria-live="polite"
-          ></div>
+          <div id="results-mul" class="results"></div>
         </section>
 
         <!-- Division -->
-        <section class="container" aria-labelledby="div-title">
+        <section class="container">
           <h2 id="div-title">Divide</h2>
           <p class="subtitle">Divide first number by second</p>
 
-          <form class="calc-form" data-op="div" aria-describedby="div-help">
+          <form class="calc-form" data-op="div">
             <div class="field">
               <label for="div-val1">Value 1</label>
               <input
@@ -207,7 +159,6 @@
                 name="div-val1"
                 type="number"
                 inputmode="decimal"
-                step="any"
                 placeholder="e.g. 10"
                 required
               />
@@ -220,28 +171,16 @@
                 name="div-val2"
                 type="number"
                 inputmode="decimal"
-                step="any"
                 placeholder="e.g. 2"
                 required
               />
             </div>
 
             <div class="actions">
-              <button
-                id="div-submit"
-                type="submit"
-                aria-label="Calculate division"
-              >
+              <button id="div-submit" onclick="getDIV()" type="submit">
                 Divide
               </button>
-              <button
-                id="clear-div"
-                type="button"
-                class="ghost"
-                aria-label="Clear divide inputs"
-              >
-                Clear
-              </button>
+              <button id="clear-div" type="button" class="ghost">Clear</button>
             </div>
 
             <p id="div-help" class="help">
@@ -249,12 +188,7 @@
             </p>
           </form>
 
-          <div
-            id="results-div"
-            class="results"
-            role="status"
-            aria-live="polite"
-          ></div>
+          <div id="results-div" class="results"></div>
         </section>
       </div>
     </main>
