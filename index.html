@@ -7,18 +7,69 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
-      <h3>Let's Sum</h3>
-      <label for="val1">Enter Value 1</label>
-      <input type="text" id="val1" />
-      <br />
-      <label for="val2">Enter Value 2</label>
-      <input type="text" id="val2" />
-      <br />
-      <button onclick="getAdd()" id="sub-sum">Sum It up</button>
-      <br />
-      <div id="results"></div>
-    </div>
+    <main class="page">
+      <section class="container" aria-labelledby="calc-title">
+        <h1 id="calc-title">Let's Sum</h1>
+        <p class="subtitle">Quick, clean and accessible calculator</p>
+
+        <form
+          class="calc-form"
+          onsubmit="event.preventDefault(); getAdd();"
+          aria-describedby="help"
+        >
+          <div class="field">
+            <label for="val1">Value 1</label>
+            <input
+              id="val1"
+              name="val1"
+              type="number"
+              inputmode="decimal"
+              step="any"
+              placeholder="e.g. 12.5"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="val2">Value 2</label>
+            <input
+              id="val2"
+              name="val2"
+              type="number"
+              inputmode="decimal"
+              step="any"
+              placeholder="e.g. 3.25"
+              required
+            />
+          </div>
+
+          <div class="actions">
+            <button id="sub-sum" type="submit" aria-label="Calculate sum">
+              Sum It up
+            </button>
+            <button
+              id="clear"
+              type="button"
+              class="ghost"
+              onclick="document.getElementById('val1').value='';document.getElementById('val2').value='';document.getElementById('results').textContent='';"
+            >
+              Clear
+            </button>
+          </div>
+
+          <p id="help" class="help">
+            Enter numbers and press "Sum It up". Result appears below.
+          </p>
+        </form>
+
+        <div
+          id="results"
+          class="results"
+          role="status"
+          aria-live="polite"
+        ></div>
+      </section>
+    </main>
 
     <script src="script.js"></script>
   </body>
