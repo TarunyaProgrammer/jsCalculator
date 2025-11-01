@@ -1,50 +1,69 @@
 console.log("Calculator app loaded");
 
-function getAdd() {
-  // Fetch the value of input with id val1
-  const num1 = Number(document.getElementById("add-val1").value);
-  // Fetch the value of input with id val2
-  const num2 = Number(document.getElementById("add-val2").value);
-  const add = num1 + num2;
-  console.log(add);
-  // Displays the result in paragraph using dom
-  document.getElementById("results-add").innerHTML = "Addition : " + add;
-  // Changes the color of paragraph tag with red
-  document.getElementById("results-add").style.color = "red";
-}
-function getSUB() {
-  // Fetch the value of input with id val1
-  const num1 = Number(document.getElementById("sub-val1").value);
-  // Fetch the value of input with id val2
-  const num2 = Number(document.getElementById("sub-val2").value);
-  const add = num1 - num2;
-  console.log(add);
-  // Displays the result in paragraph using dom
-  document.getElementById("results-sub").innerHTML = "Subtraction : " + add;
-  // Changes the color of paragraph tag with red
-  document.getElementById("results-sub").style.color = "red";
-}
-function getMUL() {
-  // Fetch the value of input with id val1
-  const num1 = Number(document.getElementById("val1").value);
-  // Fetch the value of input with id val2
-  const num2 = Number(document.getElementById("val2").value);
-  const add = num1 * num2;
-  console.log(add);
-  // Displays the result in paragraph using dom
-  document.getElementById("results-mul").innerHTML = "Multiply : " + add;
-  // Changes the color of paragraph tag with red
-  document.getElementById("results-mul").style.color = "red";
-}
-function getDIV() {
-  // Fetch the value of input with id val1
-  const num1 = Number(document.getElementById("val1").value);
-  // Fetch the value of input with id val2
-  const num2 = Number(document.getElementById("val2").value);
-  const add = num1 / num2;
-  console.log(add);
-  // Displays the result in paragraph using dom
-  document.getElementById("results-div").innerHTML = "Division5 : " + add;
-  // Changes the color of paragraph tag with red
-  document.getElementById("results-div").style.color = "red";
-}
+// centralized handlers — no inline JS
+document.addEventListener("DOMContentLoaded", () => {
+  const forms = document.querySelectorAll(".calc-form");
+
+  forms.forEach((form) => {
+    const op = form.dataset.op; // "add" | "sub" | "mul" | "div"
+    const resultsEl = form.parentElement.querySelector(".results");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const inputs = form.querySelectorAll('input[type="number"]');
+      const a = inputs[0]?.value ?? "";
+      const b = inputs[1]?.value ?? "";
+      const n1 = parseFloat(a);
+      const n2 = parseFloat(b);
+
+      // validation
+      if (!isFinite(n1) || !isFinite(n2)) {
+        resultsEl.textContent = "Enter valid numbers";
+        resultsEl.style.color = "#dc2626";
+        return;
+      }
+
+      let out;
+      switch (op) {
+        case "add":
+          out = n1 + n2;
+          break;
+        case "sub":
+          out = n1 - n2;
+          break;
+        case "mul":
+          out = n1 * n2;
+          break;
+        case "div":
+          if (n2 === 0) {
+            resultsEl.textContent = "Cannot divide by zero";
+            resultsEl.style.color = "#dc2626";
+            return;
+          }
+          out = n1 / n2;
+          break;
+        default:
+          resultsEl.textContent = "Unknown operation";
+          resultsEl.style.color = "#dc2626";
+          return;
+      }
+
+      resultsEl.textContent = out;
+      resultsEl.style.color = "#0f172a";
+    });
+  });
+
+  // wire clear buttons
+  document.querySelectorAll("button.ghost").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const section = btn.closest(".container");
+      if (!section) return;
+      section
+        .querySelectorAll('input[type="number"]')
+        .forEach((i) => (i.value = ""));
+      const r = section.querySelector(".results");
+      if (r) r.textContent = "";
+    });
+  });
+});
